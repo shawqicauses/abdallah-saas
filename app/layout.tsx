@@ -1,4 +1,7 @@
-// DONE REVIEWING: GITHUB COMMIT
+"use client"
+
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
+
 import {Poppins} from "next/font/google"
 import {PropsWithChildren} from "react"
 import "../styles/global.css"
@@ -11,7 +14,7 @@ const poppins = Poppins({
 
 const Layout = function Layout({children}: PropsWithChildren) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <head />
       <body className={poppins.className}>
         <Providers>{children}</Providers>

@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import * as SheetPrimitive from "@radix-ui/react-dialog"
 import {VariantProps, cva} from "class-variance-authority"
@@ -31,7 +31,7 @@ export interface SheetContentProps
 const SheetContent = forwardRef<ElementRef<typeof SheetPrimitive.Content>, SheetContentProps>(
   ({side = "right", className, children, ...props}, ref) => (
     <SheetPortal>
-      <SheetOverlay />
+      <SheetOverlay className="z-40" />
       <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({side}), className)} {...props}>
         {children}
         <SheetClose className="shc-dialog-close-base">

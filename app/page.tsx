@@ -1,9 +1,11 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
+
+import Link from "next/link"
 
 const Page = async function Page() {
   return (
     <main>
-      <div className="mx-auto max-w-md py-20">Mosques SaaS Application</div>
+      <Link href="/dashboard">Sign In</Link>
     </main>
   )
 }
