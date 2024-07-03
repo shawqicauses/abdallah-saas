@@ -1,5 +1,5 @@
 {
-  "reviewed": "true 1️⃣",
+  "reviewed": "true 2️⃣",
   "version": "1.0.0",
   "name": "shawqicauses-starter-template-next",
   "description": "A starter template for Next.JS projects includes every package that I need/use to build them. Developed by @shawqicauses.",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@clerk/nextjs": "5.1.6",
     "@hookform/resolvers": "3.4.0",
+    "@prisma/client": "5.16.1",
     "@radix-ui/react-alert-dialog": "1.0.5",
     "@radix-ui/react-avatar": "1.1.0",
     "@radix-ui/react-dialog": "1.1.0",
@@ -62,6 +63,7 @@
     "postcss": "8.4.38",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "0.5.14",
+    "prisma": "5.16.1",
     "tailwindcss": "3.4.3",
     "typescript": "5.4.5"
   },
