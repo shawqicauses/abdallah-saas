@@ -1,5 +1,8 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
+import {PlusCircleIcon} from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import {Fragment} from "react"
 import {
   Button,
   Card,
@@ -17,7 +20,17 @@ import {
 
 const VisitorsPage = function VisitorsPage() {
   return (
-    <main className="grid flex-1 items-center gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
+    <Fragment>
+      <div className="flex items-center">
+        <div className="ml-auto flex items-center gap-2">
+          <Button asChild>
+            <Link href="/dashboard/visitors/add">
+              <PlusCircleIcon className="mr-2 h-5 w-5" />
+              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Add Visitor</span>
+            </Link>
+          </Button>
+        </div>
+      </div>
       <Card>
         <CardHeader>
           <CardTitle>Visitors</CardTitle>
@@ -63,7 +76,7 @@ const VisitorsPage = function VisitorsPage() {
           </Table>
         </CardContent>
       </Card>
-    </main>
+    </Fragment>
   )
 }
 
