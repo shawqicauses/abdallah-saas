@@ -1,4 +1,4 @@
-/* DONE REVIEWING: GITHUB COMMIT 1️⃣ */
+/* DONE REVIEWING: GITHUB COMMIT */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -62,7 +62,7 @@
   }
 
   .shc-table-header-base {
-    @apply [&_tr]:border-b [&_tr]:border-border;
+    @apply [&_tr]:border-b;
   }
 
   .shc-table-body-base {
@@ -265,7 +265,7 @@
 
   /* Button Component */
   .shc-button-base {
-    @apply shc-transition [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-no-inset inline-flex items-center justify-center whitespace-nowrap text-sm font-medium leading-[1.25rem] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 [&:is(.shc-button-outline)]:focus-visible:ring-foreground [&:is(.shc-button-primary,.shc-button-secondary)]:text-white [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-foreground [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-offset-2 [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-offset-background [&:is(:not(.shc-button-link))]:rounded-md [&:is(:not(.shc-button-link))]:shadow-sm [&:is(:not(.shc-button-link))]:ring-1 [&:is(:not(.shc-button-link))]:ring-inset;
+    @apply shc-transition [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-no-inset inline-flex items-center justify-center whitespace-nowrap text-sm font-medium leading-[1.25rem] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 [&:is(.shc-button-outline)]:focus-visible:ring-foreground [&:is(.shc-button-primary,.shc-button-secondary)]:text-white [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-foreground [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-offset-2 [&:is(.shc-button-primary,.shc-button-secondary)]:focus-visible:ring-offset-background [&:is(:not(.shc-button-ghost))]:shadow-sm [&:is(:not(.shc-button-ghost,.shc-button-link))]:ring-1 [&:is(:not(.shc-button-link))]:rounded-md [&:is(:not(.shc-button-link))]:ring-inset;
   }
 
   .shc-button-primary {
@@ -277,11 +277,15 @@
   }
 
   .shc-button-accent {
-    @apply bg-foreground text-background ring-foreground;
+    @apply bg-accent text-accent-foreground ring-accent hover:bg-accent-dark hover:ring-accent-dark;
   }
 
   .shc-button-outline {
     @apply bg-background ring-input hover:bg-input;
+  }
+
+  .shc-button-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
   }
 
   .shc-button-link {
