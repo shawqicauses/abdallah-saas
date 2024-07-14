@@ -1,6 +1,6 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 import {SignOutButton} from "@clerk/nextjs"
-import {ArrowLeftFromLineIcon, TreePalm, UsersRoundIcon} from "lucide-react"
+import {ArrowLeftFromLineIcon, MoonIcon, TreePalm, UsersRoundIcon} from "lucide-react"
 import Link from "next/link"
 import {
   Tooltip,
@@ -12,6 +12,12 @@ import {
 export const links = [
   {
     id: 0,
+    name: "Mosques",
+    href: "/dashboard/mosques",
+    icon: MoonIcon
+  },
+  {
+    id: 1,
     name: "Visitors",
     href: "/dashboard/visitors",
     icon: UsersRoundIcon

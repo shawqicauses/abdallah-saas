@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,6 +18,13 @@ model User {
   username String
   email    String @unique
   role     ROLES  @default(USER)
+}
+
+model Mosque {
+  id         String   @id @default(uuid())
+  name       String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Visitor {

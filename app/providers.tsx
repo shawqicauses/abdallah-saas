@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {ClerkProvider} from "@clerk/nextjs"
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
@@ -47,7 +47,8 @@ const Providers = function Providers({children}: PropsWithChildren) {
           card: "rounded-none shadow-none",
           footer: "!bg-gradient-to-r !from-transparent !to-transparent",
           input: "shc-input-base",
-          formButtonPrimary: "shc-button-base shc-button-normal shc-button-accent"
+          formButtonPrimary:
+            "shc-button-base shc-button-normal shc-button-accent text-foreground hover:text-background"
         }
       }}>
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
