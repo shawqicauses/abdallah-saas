@@ -1,7 +1,12 @@
-// DONE REVIEWING: GITHUB COMMIT
+"use client"
+
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
+
 import {SignOutButton, UserButton} from "@clerk/nextjs"
 import {ArrowLeftFromLineIcon, PanelLeft, SearchIcon, TreePalm} from "lucide-react"
 import Link from "next/link"
+import {usePathname} from "next/navigation"
+import {Fragment} from "react"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -18,6 +23,10 @@ import {
 import {links} from "./side-navigation"
 
 const Header = function Header() {
+  const pathname = usePathname()
+  const pathnames = pathname.split("/")
+  const breadcrumbs = pathnames.filter((element) => element !== "")
+
   return (
     <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
       <Sheet>
@@ -58,15 +67,20 @@ const Header = function Header() {
       </Sheet>
       <Breadcrumb className="hidden md:flex">
         <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <Link href="/dashboard">Dashboard</Link>
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbPage>Visitors</BreadcrumbPage>
-          </BreadcrumbItem>
+          {breadcrumbs.map((breadcrumb) => (
+            <Fragment key={breadcrumb}>
+              <BreadcrumbItem className="capitalize">
+                {breadcrumb !== breadcrumbs[breadcrumbs.length - 1] ? (
+                  <BreadcrumbLink asChild>
+                    <Link href="/dashboard">{breadcrumb}</Link>
+                  </BreadcrumbLink>
+                ) : (
+                  <BreadcrumbPage>{breadcrumb}</BreadcrumbPage>
+                )}
+              </BreadcrumbItem>
+              {breadcrumb !== breadcrumbs[breadcrumbs.length - 1] && <BreadcrumbSeparator />}
+            </Fragment>
+          ))}
         </BreadcrumbList>
       </Breadcrumb>
       <div className="relative ml-auto flex-1 md:grow-0">
