@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import {zodResolver} from "@hookform/resolvers/zod"
 import {useRouter} from "next/navigation"
@@ -9,11 +9,13 @@ import {v4} from "uuid"
 import {z} from "zod"
 import {
   Button,
+  Calendar,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  DatePicker,
   Form,
   FormControl,
   FormField,
@@ -22,7 +24,6 @@ import {
   FormMessage,
   Input
 } from "../../../../components/ui"
-import DatePicker from "../../../../components/ui/date-picker"
 import {createVisitor} from "../../../../server/actions/visitor"
 
 const addVisitorsFormSchema = z.object({
@@ -97,7 +98,14 @@ const AddVisitorPage = function AddVisitorPage() {
                 <FormItem>
                   <FormLabel>Last Visit</FormLabel>
                   <FormControl>
-                    <DatePicker date={field.value} setDate={field.onChange} />
+                    <DatePicker date={field.value}>
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        initialFocus
+                      />
+                    </DatePicker>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
