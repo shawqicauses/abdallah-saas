@@ -1,8 +1,10 @@
 "use server"
 
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {Mosque} from "@prisma/client"
+import {revalidatePath} from "next/cache"
+import {redirect} from "next/navigation"
 import {db} from "../db"
 
 export const getMosques = async function getMosques() {
@@ -16,18 +18,16 @@ export const getMosque = async function getMosque(id: string) {
 }
 
 export const createMosque = async function createMosque(mosque: Mosque) {
-  await db.mosque.create({
-    data: mosque
-  })
+  await db.mosque.create({data: mosque})
+  redirect("/dashboard/mosques")
 }
 
-export const updateMosque = async function updateMosque(mosque: Partial<Mosque>) {
-  await db.mosque.update({
-    where: {id: mosque.id},
-    data: mosque
-  })
+export const updateMosque = async function updateMosque(id: string, mosque: Partial<Mosque>) {
+  await db.mosque.update({where: {id}, data: mosque})
+  redirect("/dashboard/mosques")
 }
 
 export const deleteMosque = async function deleteMosque(id: string) {
   await db.mosque.delete({where: {id}})
+  revalidatePath("/dashboard", "page")
 }
