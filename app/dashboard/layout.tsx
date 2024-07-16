@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 3️⃣
+// DONE REVIEWING: GITHUB COMMIT 4️⃣
 import {PropsWithChildren} from "react"
 import Header from "./_components/header"
 import DashboardRedirect from "./_components/redirect"
@@ -8,9 +8,9 @@ const DashboardLayout = async function DashboardLayout({children}: PropsWithChil
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <SideNavigation />
-      <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
+      <div className="flex min-h-screen flex-col sm:gap-4 sm:py-4 sm:pl-14">
         <Header />
-        <main className="grid flex-1 items-center gap-4 p-4 sm:px-6 sm:py-0 md:gap-4">
+        <main className="flex flex-1 flex-col items-stretch justify-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-4">
           <DashboardRedirect>{children}</DashboardRedirect>
         </main>
       </div>

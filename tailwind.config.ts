@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 /* eslint import/no-extraneous-dependencies: "off" */
 
@@ -297,16 +297,6 @@ export default {
           "--border": toRGB(colors.zinc["800"]),
           "--ring": toRGB(colors.zinc["300"]),
           "--input": toRGB(colors.zinc["800"]),
-
-          "--primary": toRGB(colors.green["400"]),
-          "--primary-light": toRGB(colors.green["300"]),
-          "--primary-dark": toRGB(colors.green["500"]),
-          "--primary-foreground": toRGB(colors.green["950"]),
-
-          "--secondary": toRGB(colors.blue["400"]),
-          "--secondary-light": toRGB(colors.blue["300"]),
-          "--secondary-dark": toRGB(colors.blue["500"]),
-          "--secondary-foreground": toRGB(colors.blue["950"]),
 
           "--accent": toRGB(colors.zinc["50"]),
           "--accent-light": toRGB(colors.white),

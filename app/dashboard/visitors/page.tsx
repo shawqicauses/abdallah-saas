@@ -1,82 +1,58 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
-import {PlusCircleIcon} from "lucide-react"
-import Image from "next/image"
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
+import {CopyPlusIcon, PlusCircleIcon} from "lucide-react"
 import Link from "next/link"
-import {Fragment} from "react"
 import {
   Button,
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
+  CardTitle
 } from "../../../components/ui"
+import {cn} from "../../../lib/utils"
+import {getVisitors} from "../../../server/actions/visitor"
+import VisitorsTable from "../_components/visitors/table"
 
-const VisitorsPage = function VisitorsPage() {
+const VisitorsPage = async function VisitorsPage() {
+  const visitors = await getVisitors()
   return (
-    <Fragment>
-      <div className="flex items-center">
-        <div className="ml-auto flex items-center gap-2">
-          <Button asChild>
-            <Link href="/dashboard/visitors/add">
-              <PlusCircleIcon className="mr-2 h-5 w-5" />
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">Add Visitor</span>
-            </Link>
-          </Button>
-        </div>
-      </div>
-      <Card>
-        <CardHeader>
+    <Card className="flex flex-1 flex-col items-stretch justify-start">
+      <CardHeader className="flex-col gap-3 space-y-0 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-1">
           <CardTitle>Visitors</CardTitle>
           <CardDescription>Check all visitors of all mosques.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead className="hidden w-[6.25rem] sm:table-cell">
-                  <span className="sr-only">Image</span>
-                </TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Phone Number</TableHead>
-                <TableHead>Last Visit</TableHead>
-                <TableHead>
-                  <span className="sr-only">Actions</span>
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="hidden sm:table-cell">
-                  <Image
-                    src="https://img.clerk.com/eyJ0eXBlIjoiZGVmYXVsdCIsImlpZCI6Imluc18yaWd4VzluTUhsN2JrYVA0N2g1NlZScGFWSGEiLCJyaWQiOiJ1c2VyXzJpaDNoMkpZUmtacEM0NWFNb2RhNjE4dmVlaSJ9"
-                    alt="User #01 Image"
-                    width={64}
-                    height={64}
-                    className="aspect-square rounded-md object-cover"
-                  />
-                </TableCell>
-                <TableCell className="font-medium">Shawqi Hatem</TableCell>
-                <TableCell>+970 598 182 008</TableCell>
-                <TableCell>01/07/2024</TableCell>
-                <TableCell>
-                  <Button variant="accent" className="mb-2 sm:mr-2">
-                    Edit
-                  </Button>
-                  <Button variant="outline">Delete</Button>
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </Fragment>
+        </div>
+        <Button asChild>
+          <Link href="/dashboard/visitors/add">
+            <PlusCircleIcon className="mr-2 h-5 w-5" />
+            <span className="sm:whitespace-nowrap">Add Visitor</span>
+          </Link>
+        </Button>
+      </CardHeader>
+      <CardContent
+        className={cn(
+          "flex flex-1 justify-center",
+          visitors.length === 0 ? "items-center" : "items-stretch p-0"
+        )}>
+        {visitors.length === 0 ? (
+          <div className="w-fll flex h-full flex-col items-center justify-center">
+            <CopyPlusIcon strokeWidth={1.5} className="size-12 text-primary md:size-20" />
+            <h3 className="mt-4 text-xl font-semi-bold leading-none md:text-xl-2">No Visitors</h3>
+            <p className="mt-1 text-base leading-relaxed text-muted-foreground md:text-lg">
+              There are no visitors. Add one!
+            </p>
+            <Button className="mt-4" asChild>
+              <Link href="/dashboard/visitors/add">
+                <PlusCircleIcon className="mr-2 h-5 w-5" />
+                <span className="sm:whitespace-nowrap">Add Visitor</span>
+              </Link>
+            </Button>
+          </div>
+        ) : (
+          <VisitorsTable visitors={visitors} />
+        )}
+      </CardContent>
+    </Card>
   )
 }
 
