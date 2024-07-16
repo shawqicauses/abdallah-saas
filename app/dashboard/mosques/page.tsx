@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {CopyPlusIcon, PlusCircleIcon} from "lucide-react"
 import Link from "next/link"
@@ -12,6 +12,7 @@ import {
 } from "../../../components/ui"
 import {cn} from "../../../lib/utils"
 import {getMosques} from "../../../server/actions/mosque"
+import MosquesTable from "../_components/mosques/table"
 
 const MosquesPage = async function MosquesPage() {
   const mosques = await getMosques()
@@ -49,7 +50,7 @@ const MosquesPage = async function MosquesPage() {
             </Button>
           </div>
         ) : (
-          "Table"
+          <MosquesTable mosques={mosques} />
         )}
       </CardContent>
     </Card>

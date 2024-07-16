@@ -1,12 +1,12 @@
 "use server"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import {Mosque} from "@prisma/client"
 import {db} from "../db"
 
 export const getMosques = async function getMosques() {
-  const response = await db.mosque.findMany()
+  const response = await db.mosque.findMany({include: {visitors: true}})
   return response
 }
 
