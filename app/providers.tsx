@@ -1,12 +1,13 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 2️⃣
+// DONE REVIEWING: GITHUB COMMIT 3️⃣
 
-import {ClerkProvider} from "@clerk/nextjs"
+import {ClerkLoaded, ClerkLoading, ClerkProvider} from "@clerk/nextjs"
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query"
 import {httpBatchLink} from "@trpc/client"
 import {PropsWithChildren, useState} from "react"
 import trpc from "../client"
+import Loading from "../components/loading"
 import {Toaster} from "../components/ui"
 
 const createQueryClient = function createQueryClient() {
@@ -53,7 +54,10 @@ const Providers = function Providers({children}: PropsWithChildren) {
       }}>
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
-          {children}
+          <ClerkLoading>
+            <Loading />
+          </ClerkLoading>
+          <ClerkLoaded>{children}</ClerkLoaded>
           <Toaster />
         </QueryClientProvider>
       </trpc.Provider>
