@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 4️⃣
+// DONE REVIEWING: GITHUB COMMIT 5️⃣
 
 /* eslint import/no-extraneous-dependencies: "off" */
 
@@ -73,7 +73,7 @@ const Providers = function Providers({children}: PropsWithChildren) {
           colorBackground
         },
         elements: {
-          cardBox: "border-0 rounded-none shadow-none",
+          cardBox: "border-0 shadow-none",
           card: "bg-transparent p-2 border-0 shadow-none",
           input: "shc-input-base",
           footer: "bg-gradient-to-r from-transparent to-transparent"

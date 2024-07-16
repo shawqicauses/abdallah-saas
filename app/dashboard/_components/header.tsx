@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {SignOutButton, UserButton} from "@clerk/nextjs"
 import {ArrowLeftFromLineIcon, PanelLeft, SearchIcon, TreePalm} from "lucide-react"
@@ -17,6 +17,7 @@ import {
   Button,
   Input,
   Sheet,
+  SheetClose,
   SheetContent,
   SheetTrigger
 } from "../../../components/ui"
@@ -38,23 +39,26 @@ const Header = function Header() {
         </SheetTrigger>
         <SheetContent side="left" className="sm:max-w-xs">
           <nav className="grid gap-6 text-lg font-medium">
-            <Link
-              href="/dashboard"
-              className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semi-bold text-primary-foreground md:text-base">
-              <TreePalm
-                aria-hidden="true"
-                className="h-5 w-5 transition-all group-hover:scale-110"
-              />
-              <span className="sr-only">Abd Allah SaaS</span>
-            </Link>
-            {links.map((link) => (
+            <SheetClose asChild>
               <Link
-                key={link.id}
-                href={link.href}
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground">
-                <link.icon aria-hidden="true" className="h-5 w-5" />
-                {link.name}
+                href="/dashboard"
+                className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semi-bold text-primary-foreground md:text-base">
+                <TreePalm
+                  aria-hidden="true"
+                  className="h-5 w-5 transition-all group-hover:scale-110"
+                />
+                <span className="sr-only">Abd Allah SaaS</span>
               </Link>
+            </SheetClose>
+            {links.map((link) => (
+              <SheetClose asChild key={link.id}>
+                <Link
+                  href={link.href}
+                  className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground">
+                  <link.icon aria-hidden="true" className="h-5 w-5" />
+                  {link.name}
+                </Link>
+              </SheetClose>
             ))}
             <SignOutButton>
               <div className="flex cursor-pointer items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground">
