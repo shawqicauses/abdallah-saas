@@ -1,11 +1,11 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
-import Link from "next/link"
+import Header from "./_components/header"
 
 const Page = async function Page() {
   return (
     <main>
-      <Link href="/dashboard">Sign In</Link>
+      <Header />
     </main>
   )
 }
