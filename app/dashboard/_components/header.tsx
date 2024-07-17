@@ -1,9 +1,9 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT 2️⃣
+// DONE REVIEWING: GITHUB COMMIT 3️⃣
 
 import {SignOutButton, UserButton} from "@clerk/nextjs"
-import {ArrowLeftFromLineIcon, PanelLeft, SearchIcon, TreePalm} from "lucide-react"
+import {ArrowLeftFromLineIcon, GlobeIcon, PanelLeft, SearchIcon, TreePalm} from "lucide-react"
 import Link from "next/link"
 import {usePathname} from "next/navigation"
 import {Fragment} from "react"
@@ -95,6 +95,12 @@ const Header = function Header() {
           className="w-full rounded-lg bg-background pl-8 md:w-[12.5rem] lg:w-[21rem]"
         />
       </div>
+      <Button variant="ghost" className="gap-2" asChild>
+        <Link href="/">
+          <GlobeIcon aria-hidden="true" className="h-5 w-5 text-primary" />
+          Home
+        </Link>
+      </Button>
       <UserButton />
     </header>
   )
