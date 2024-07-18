@@ -1,6 +1,6 @@
 "use server"
 
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 
 import {Visitor} from "@prisma/client"
 import {revalidatePath} from "next/cache"
@@ -22,9 +22,13 @@ export const createVisitor = async function createVisitor(visitor: Visitor) {
   redirect("/dashboard/visitors")
 }
 
-export const updateVisitor = async function updateVisitor(id: string, visitor: Partial<Visitor>) {
+export const updateVisitor = async function updateVisitor(
+  id: string,
+  visitor: Partial<Visitor>,
+  isRedirect: boolean = true
+) {
   await db.visitor.update({where: {id}, data: visitor})
-  redirect("/dashboard/visitors")
+  if (isRedirect) redirect("/dashboard/visitors")
 }
 
 export const deleteVisitor = async function deleteVisitor(id: string) {

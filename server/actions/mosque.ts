@@ -1,6 +1,6 @@
 "use server"
 
-// DONE REVIEWING: GITHUB COMMIT 3️⃣
+// DONE REVIEWING: GITHUB COMMIT 4️⃣
 
 import {Mosque} from "@prisma/client"
 import {revalidatePath} from "next/cache"
@@ -18,7 +18,7 @@ export const searchMosques = async function searchMosques(query: string) {
 }
 
 export const getMosque = async function getMosque(id: string) {
-  const response = await db.mosque.findUnique({where: {id}})
+  const response = await db.mosque.findUnique({where: {id}, include: {visitors: true}})
   return response
 }
 
