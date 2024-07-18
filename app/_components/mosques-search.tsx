@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 /* eslint import/no-extraneous-dependencies: "off" */
 
@@ -13,12 +13,19 @@ import {
 } from "@headlessui/react"
 import {Mosque} from "@prisma/client"
 import {CheckIcon, ChevronsUpDownIcon} from "lucide-react"
+import {usePathname, useRouter, useSearchParams} from "next/navigation"
 import {useEffect, useState, useTransition} from "react"
 import {Button} from "../../components/ui"
-import {searchMosques} from "../../server/actions/mosque"
+import {getMosque, searchMosques} from "../../server/actions/mosque"
 
 const MosquesSearch = function MosquesSearch() {
   const [isPending, startTransition] = useTransition()
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+  const searchParamsURL = new URLSearchParams(Array.from(searchParams.entries()))
+  const mosqueSearchParamsQuery = searchParamsURL.get("mosque")
+
   const [mosques, setMosques] = useState<Mosque[]>([])
   const [mosque, setMosque] = useState<Mosque | null>(null)
   const [query, setQuery] = useState<string | null>(null)
@@ -30,6 +37,14 @@ const MosquesSearch = function MosquesSearch() {
         setMosques(mosquesQuery)
       })
   }, [query])
+
+  useEffect(() => {
+    if (mosqueSearchParamsQuery)
+      startTransition(async () => {
+        const mosqueQuery = await getMosque(mosqueSearchParamsQuery)
+        setMosque(mosqueQuery)
+      })
+  }, [mosqueSearchParamsQuery])
 
   return (
     <div className="flex flex-col items-stretch gap-2 sm:flex-row">
@@ -70,7 +85,19 @@ const MosquesSearch = function MosquesSearch() {
           )}
         </div>
       </Combobox>
-      <Button disabled={mosque === null}>Search</Button>
+      <Button
+        disabled={isPending || mosque === null}
+        onClick={() => {
+          if (mosque?.id) {
+            searchParamsURL.set("mosque", `${mosque?.id}`)
+            const searchParamsQuery = searchParamsURL.toString()
+              ? ["?", searchParamsURL.toString()].join("")
+              : ""
+            router.push(`${pathname}${searchParamsQuery}`)
+          }
+        }}>
+        Search
+      </Button>
     </div>
   )
 }

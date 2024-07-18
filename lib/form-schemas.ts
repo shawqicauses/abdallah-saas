@@ -1,8 +1,9 @@
-// DONE REVIEWING: GITHUB COMMIT 1️⃣
+// DONE REVIEWING: GITHUB COMMIT 2️⃣
 import {z} from "zod"
 
 export const addMosquesFormSchema = z.object({
-  name: z.string().min(2)
+  name: z.string().min(2),
+  location: z.string().url()
 })
 
 export const addVisitorsFormSchema = z.object({

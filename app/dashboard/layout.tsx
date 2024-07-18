@@ -1,10 +1,14 @@
-// DONE REVIEWING: GITHUB COMMIT 4️⃣
+// DONE REVIEWING: GITHUB COMMIT 5️⃣
+import {currentUser} from "@clerk/nextjs/server"
+import {redirect} from "next/navigation"
 import {PropsWithChildren} from "react"
 import Header from "./_components/header"
 import DashboardRedirect from "./_components/redirect"
 import SideNavigation from "./_components/side-navigation"
 
 const DashboardLayout = async function DashboardLayout({children}: PropsWithChildren) {
+  const userAuthenticated = await currentUser()
+  if (userAuthenticated?.privateMetadata.role !== "ADMIN") redirect("/un-authorized")
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <SideNavigation />

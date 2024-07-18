@@ -1,6 +1,6 @@
 "use client"
 
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 
 import {zodResolver} from "@hookform/resolvers/zod"
 import {Mosque} from "@prisma/client"
@@ -27,20 +27,22 @@ const AddMosquesForm = function AddMosquesForm({mosque}: AddMosquesFormType) {
     mode: "onChange",
     resolver: zodResolver(addMosquesFormSchema),
     defaultValues: {
-      name: mosque?.name
+      name: mosque?.name,
+      location: mosque?.location
     }
   })
 
   const {isSubmitting} = form.formState
   const onSubmit = async function onSubmit(values: z.infer<typeof addMosquesFormSchema>) {
     if (mosque?.id) {
-      await updateMosque(mosque.id, {name: values.name})
+      await updateMosque(mosque.id, {name: values.name, location: values.location})
       return
     }
 
     await createMosque({
       id: v4(),
       name: values.name,
+      location: values.location,
       created_at: new Date(),
       updated_at: new Date()
     })
@@ -58,6 +60,20 @@ const AddMosquesForm = function AddMosquesForm({mosque}: AddMosquesFormType) {
               <FormLabel>Name</FormLabel>
               <FormControl>
                 <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="location"
+          control={form.control}
+          disabled={isSubmitting}
+          render={({field}) => (
+            <FormItem>
+              <FormLabel>Location</FormLabel>
+              <FormControl>
+                <Input type="url" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
