@@ -1,4 +1,4 @@
-// DONE REVIEWING: GITHUB COMMIT
+// DONE REVIEWING: GITHUB COMMIT 1️⃣
 const Loading = function Loading() {
   return (
     <div className="min-w-screen shc-flex-center min-h-screen">
@@ -6,7 +6,7 @@ const Loading = function Loading() {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
-        className="-ml-1 mr-3 h-8 w-8 animate-spin text-primary">
+        className="h-8 w-8 animate-spin text-primary">
         <circle
           cx="12"
           cy="12"
